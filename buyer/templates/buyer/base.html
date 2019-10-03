@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'buyer/main.css'%}">
+    
+
+    {% if title %}
+    <title>SakaHapa - {{ title }}</title>
+    {% else %}
+    <title>SakaHapa</title>
+    {% endif %}
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <h2>SakaHapa</h2>
+        </div>
+        
+
+        <div class="toggle"></div>
+        <div class="overlay"></div>
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'buyer-home' %}">Home</a></li>
+                <li><a href="{% url 'buyer-how it works' %}">How It Works</a></li>
+                <li><a href="{% url 'buyer-my profile' %}">My Profile</a></li>
+                <li><a href="{% url 'buyer-my purchases' %}">My Purchases</a></li>
+                <li><a href="{% url 'buyer-popular products' %}">Popular Products</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="{% url 'logout' %}"><h3>Log Out</h3></a></li>
+            </ul>
+        </div>
+
+       
+       
+
+        
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.toggle').click(function(){
+                    $('.toggle').toggleClass('active')
+                    $('.overlay').toggleClass('active')
+                    $('.menu').toggleClass('active')
+                })
+            })
+        </script>
+
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+
+    
+</body>
+</html>

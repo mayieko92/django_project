@@ -1,0 +1,11 @@
+{% extends "buyer/base.html" %}
+{% block content %}
+    {% for post in posts %}
+        <h1>{{ post.image }}</h1>
+        <p>Time Remaining: {{ post.timer }}</p>
+        <p>Product Description: {{ post.content }}</p>
+        <p>Category: {{ post.category }}</p>
+        <p>Budget: {{ post.budget }}</p>
+        <p>Seller Location Radius: {{ post.location }}</p>
+    {% endfor %} 
+{% endblock content %}    
